@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# This script connects to a tmux session.
+# If the session not already exists it will be created.
+
+TMX_SESSION="tmx_session"
+
+function ensure_session_exists () {
+    tmux new-session -d -t 0 -s "$TMX_SESSION" &> /dev/null
+}
+
+function attach_session () {
+    tmux attach-session -t "$TMX_SESSION"
+}
+
+ensure_session_exists
+
+attach_session
